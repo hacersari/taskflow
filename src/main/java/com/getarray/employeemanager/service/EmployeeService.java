@@ -1,5 +1,6 @@
 package com.getarray.employeemanager.service;
 
+import com.getarray.employeemanager.exception.UserNotFoundException;
 import com.getarray.employeemanager.model.Employee;
 import com.getarray.employeemanager.repo.EmployeeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class EmployeeService {
     // find an employee by id
     public Employee findEmployeeById(Long id){
         return employeeRepo.findEmployeeById(id)
-                .orElseThrow(() -> new UserNotFoundException ("User by Id " +id+ " was not found"));
+                .orElseThrow(() -> new UserNotFoundException("User by Id " +id+ " was not found"));
     }
 
     public void deleteEmployee(Long id){
