@@ -28,4 +28,22 @@ public class EmployeeResource {
         Employee employee = employeeService.findEmployeeById(id);
         return new ResponseEntity<>(employee, HttpStatus.OK);
     }
+
+    @PostMapping("/add") // change in the actual backend
+    public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
+        Employee newEmployee = employeeService.addEmployee(employee);
+        return new ResponseEntity<>(newEmployee, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update") // updating
+    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employee) {
+        Employee updateEmployee = employeeService.addEmployee(employee);
+        return new ResponseEntity<>(updateEmployee, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Employee> deleteEmployee(@PathVariable("id") long id) {
+        employeeService.deleteEmployee(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
